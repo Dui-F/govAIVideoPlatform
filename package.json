@@ -1,0 +1,24 @@
+{
+  "name": "gov-ai-video-platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:admin\"",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:admin": "npm run dev --workspace=apps/admin",
+    "build": "npm run build --workspace=apps/web && npm run build --workspace=apps/admin",
+    "start": "concurrently \"npm run start:web\" \"npm run start:admin\"",
+    "start:web": "npm run start --workspace=apps/web",
+    "start:admin": "npm run start --workspace=apps/admin",
+    "lint": "npm run lint --workspaces",
+    "db:types": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > packages/database/src/types.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}
