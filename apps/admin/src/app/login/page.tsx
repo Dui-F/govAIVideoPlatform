@@ -12,9 +12,9 @@ export default function AdminLoginPage() {
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  const hasSupabase = supabaseUrl && supabaseKey && 
+  const hasSupabase = !!(supabaseUrl && supabaseKey && 
     supabaseUrl !== 'https://your-project.supabase.co' && 
-    supabaseKey !== 'your-anon-key'
+    supabaseKey !== 'your-anon-key')
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
